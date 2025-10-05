@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://di3f3hyxmjaue" path="res://assets/background/tex_bg_test1.png" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://bxatvfspae0f2" path="res://scripts/game.gd" id="1_yqjtg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cluo20mkuuwd7" path="res://scenes/player.tscn" id="3_iywne"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
@@ -16,9 +15,9 @@ centered = false
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("3_iywne")]
+position = Vector2(162, 57)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_yqjtg")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Player2" parent="." instance=ExtResource("3_iywne")]
+position = Vector2(162, 57)
+player_index = 1
