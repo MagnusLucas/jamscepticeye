@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
 @export var player_index = 0
+@export var player_animations_set : SpriteFrames
 var input_velocity = Vector2.ZERO
 var speed = 200
 var deadzone = 0.2
 # var for keyboard or controller?
 
 func _ready():
-	pass
+	var sprite_frames_path : String = "res://assets/player/player" + str(player_index + 1) + "_animations.tres"
+	var PLAYER_ANIMATIONS = load(sprite_frames_path)
+	$PlayerSprite.sprite_frames = PLAYER_ANIMATIONS
+	$PlayerSprite.play()
 
 func _physics_process(delta):
 	# movement [
@@ -34,3 +38,12 @@ func _physics_process(delta):
 	
 	position += input_velocity * speed * delta
 	# ] movement
+	
+	# setting animation
+	if not input_velocity.is_zero_approx():
+		$PlayerSprite.play("walk")
+	else:
+		$PlayerSprite.play("idle")
+	
+	# setting sprite rotation
+	$PlayerSprite.look_at(global_position + input_velocity)

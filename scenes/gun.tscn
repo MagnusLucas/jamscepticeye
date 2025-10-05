@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cub5ds2mlotep"]
+
+[ext_resource type="Texture2D" uid="uid://bo7o8xg08rc47" path="res://assets/player/Weapon_1.png" id="1_og67c"]
+[ext_resource type="Script" uid="uid://ct1cshmwyllqx" path="res://scripts/gun.gd" id="2_gp1hk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd4js"]
+atlas = ExtResource("1_og67c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b133"]
+atlas = ExtResource("1_og67c")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haq8l"]
+atlas = ExtResource("1_og67c")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmp1f"]
+atlas = ExtResource("1_og67c")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oi81"]
+atlas = ExtResource("1_og67c")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lyo6"]
+atlas = ExtResource("1_og67c")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu2bp"]
+atlas = ExtResource("1_og67c")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hbmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd4js")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b133")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haq8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmp1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oi81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lyo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu2bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd4js")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 20.0
+}]
+
+[node name="Gun" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6hbmn")
+animation = &"shoot"
+frame = 7
+frame_progress = 1.0
+centered = false
+offset = Vector2(4, -8)
+script = ExtResource("2_gp1hk")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.4
+one_shot = true

@@ -1,41 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cluo20mkuuwd7"]
+[gd_scene load_steps=5 format=3 uid="uid://cluo20mkuuwd7"]
 
 [ext_resource type="Script" uid="uid://bncgbcnuphjl4" path="res://scripts/player.gd" id="1_dqkch"]
-[ext_resource type="Texture2D" uid="uid://dwybumppk3jta" path="res://assets/player/spritesheet_player_idle2.png" id="2_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://ba5xbfbaiqljs" path="res://assets/player/gun.png" id="3_tuyoq"]
-[ext_resource type="Script" uid="uid://ct1cshmwyllqx" path="res://scripts/gun.gd" id="4_fjrip"]
+[ext_resource type="SpriteFrames" uid="uid://c4oy5ch1s0n3a" path="res://assets/player/player1_animations.tres" id="2_dqkch"]
+[ext_resource type="PackedScene" uid="uid://cub5ds2mlotep" path="res://scenes/gun.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(10, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iywne"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(0, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(16, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
-atlas = ExtResource("2_qlg0r")
-region = Rect2(32, 0, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gee14"]
-animations = [{
-"frames": [{
-"duration": 8.0,
-"texture": SubResource("AtlasTexture_iywne")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p57ef")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5sy4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dqkch")
@@ -45,13 +15,8 @@ position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_gee14")
-frame_progress = 0.8722547
+sprite_frames = ExtResource("2_dqkch")
+animation = &"idle"
 
-[node name="Gun" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_tuyoq")
-centered = false
-offset = Vector2(0, -6)
-script = ExtResource("4_fjrip")
+[node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
+position = Vector2(0, 1)
